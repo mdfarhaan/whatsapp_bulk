@@ -24,12 +24,14 @@ client.on("ready", () => {
     } else {
       let temp = JSON.parse(data);
       const message = temp.message;
+      const link = temp.link;
+      const msg = message + "\n" + link;
       const contactList = temp.contactList;
       contactList.map((number, index) => {
         setTimeout(() => {
           try {
             const chatId = `91${parseInt(number)}@c.us`;
-            client.sendMessage(chatId, message);
+            client.sendMessage(chatId, msg);
             log("Message sent to " + chalk.green(number) + " successfully");
           } catch (error) {
             log("Error sending message to " + chalk.red(number));
