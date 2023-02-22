@@ -28,14 +28,14 @@ client.on("ready", () => {
       contactList.map((number, index) => {
         setTimeout(() => {
           try {
-            const chatId = `91${number}@c.us`;
+            const chatId = `91${parseInt(number)}@c.us`;
             client.sendMessage(chatId, message);
             log("Message sent to " + chalk.green(number) + " successfully");
           } catch (error) {
             log("Error sending message to " + chalk.red(number));
             log(chalk.red(error?.message));
           }
-        }, 3000 * index);
+        }, 3000);
       });
     }
   });
